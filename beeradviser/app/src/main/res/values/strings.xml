@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">beer adviser</string>
+    <string name="hello">HELLLLo2</string>
+    <string name="button">button!</string>
+    <string name="spinner">spinner!</string>
+    <string-array name="massiv_strok">
+        <item>value1</item>
+        <item>value2</item>
+        <item>value3</item>
+    </string-array>
+</resources>
