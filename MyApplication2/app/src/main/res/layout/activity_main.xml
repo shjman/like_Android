@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:columnCount="4"
+    android:orientation="horizontal"
+    android:rowCount="6">
+
+
+    <TextView
+        android:id="@+id/tv_result"
+        android:layout_row="0"
+        android:layout_column="0"
+        android:layout_columnSpan="3"
+        android:layout_gravity="fill" />
+
+    <TextView
+        android:id="@+id/tv_operation"
+        android:layout_row="0"
+        android:layout_column="3" />
+
+
+    <TextView
+        android:id="@+id/tv_number"
+        android:layout_row="1"
+        android:layout_column="0"
+        android:layout_columnSpan="3"
+        android:layout_gravity="fill" />
+
+    <Button
+        android:id="@+id/btn_clear"
+        android:layout_row="1"
+        android:layout_column="3"
+        android:text="@string/btn_clear" />
+
+
+    <Button
+        android:id="@+id/btn_7"
+        android:layout_row="2"
+        android:layout_column="0"
+        android:onClick="onNumberClick"
+        android:text="@string/btn_7" />
+
+    <Button
+        android:id="@+id/btn_8"
+        android:layout_row="2"
+        android:layout_column="1"
+        android:onClick="onNumberClick"
+        android:text="@string/btn_8" />
+
+    <Button
+        android:id="@+id/btn_9"
+        android:layout_row="2"
+        android:layout_column="2"
+        android:onClick="onNumberClick"
+        android:text="@string/btn_9" />
+
+    <Button
+        android:id="@+id/btn_division"
+        android:layout_row="2"
+        android:layout_column="3"
+        android:onClick="onOperationClick"
+        android:text="@string/btn_division" />
+
+    <Button
+        android:id="@+id/btn_4"
+        android:layout_row="3"
+        android:layout_column="0"
+        android:onClick="onNumberClick"
+        android:text="@string/btn_4" />
+
+    <Button
+        android:id="@+id/btn_5"
+        android:layout_row="3"
+        android:layout_column="1"
+        android:onClick="onNumberClick"
+        android:text="@string/btn_5" />
+
+    <Button
+        android:id="@+id/btn_6"
+        android:layout_row="3"
+        android:layout_column="2"
+        android:onClick="onNumberClick"
+        android:text="@string/btn_6" />
+
+    <Button
+        android:id="@+id/btn_multiplication"
+        android:layout_row="3"
+        android:layout_column="3"
+        android:onClick="onOperationClick"
+        android:text="@string/btn_multiplication" />
+
+    <Button
+        android:id="@+id/btn_1"
+        android:layout_row="4"
+        android:layout_column="0"
+        android:onClick="onNumberClick"
+        android:text="@string/btn_1" />
+
+    <Button
+        android:id="@+id/btn_2"
+        android:layout_row="4"
+        android:layout_column="1"
+        android:onClick="onNumberClick"
+        android:text="@string/btn_2" />
+
+    <Button
+        android:id="@+id/btn_3"
+        android:layout_row="4"
+        android:layout_column="2"
+        android:onClick="onNumberClick"
+        android:text="@string/btn_3" />
+
+    <Button
+        android:id="@+id/btn_subtraction"
+        android:layout_row="4"
+        android:layout_column="3"
+        android:onClick="onOperationClick"
+        android:text="@string/btn_subtraction" />
+
+    <Button
+        android:id="@+id/btn_0"
+        android:layout_row="5"
+        android:layout_column="0"
+        android:onClick="onNumberClick"
+        android:text="@string/btn_0" />
+
+    <Button
+        android:id="@+id/btn_point"
+        android:layout_row="5"
+        android:layout_column="1"
+        android:onClick="onNumberClick"
+        android:text="@string/btn_point" />
+
+
+    <Button
+        android:id="@+id/btn_result"
+        android:layout_row="5"
+        android:layout_column="2"
+        android:onClick="onOperationClick"
+        android:text="@string/btn_result" />
+
+    <Button
+        android:id="@+id/btn_addition"
+        android:layout_row="5"
+        android:layout_column="3"
+        android:onClick="onOperationClick"
+        android:text="@string/btn_addition" />
+
+</GridLayout>

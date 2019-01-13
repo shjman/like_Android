@@ -17,4 +17,5 @@
     <string name="btn_0">0</string>
     <string name="btn_result">=</string>
     <string name="btn_addition">+</string>
+    <string name="btn_point">.</string>
 </resources>
