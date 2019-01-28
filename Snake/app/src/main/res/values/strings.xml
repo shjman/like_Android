@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Snake</string>
+    <string name="title_activity_snake_filed">SnakeFiledActivity</string>
+    <string name="btn_left">btn_left</string>
+    <string name="btn_right">btn_right</string>
+    <string name="btn_up">btn_up</string>
+    <string name="title_message">тока бе3 о6ид</string>
+    <string name="message_message">YOU LOSE!!!!!!!! bitch </string>
+    <string name="positive_button">try again</string>
+    <string name="negative_button">i am loser</string>
+</resources>
