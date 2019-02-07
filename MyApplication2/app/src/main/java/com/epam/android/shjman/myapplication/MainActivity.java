@@ -7,6 +7,9 @@ import android.widget.Button;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
+    private static final String LAST_OPERATION = "LAST_OPERATION";
+    private static final String OPERAND = "OPERAND";
+
     private TextView resultField;
     private TextView numberField;
     private TextView operationField;
@@ -92,4 +95,23 @@ public class MainActivity extends AppCompatActivity {
         resultField.setText(String.valueOf(operand));
         numberField.setText("");
     }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        outState.putString(LAST_OPERATION, lastOperation);
+        if (operand != null)
+            outState.putDouble(OPERAND, operand);
+        super.onSaveInstanceState(outState);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        lastOperation = savedInstanceState.getString(LAST_OPERATION);
+        operand = savedInstanceState.getDouble(OPERAND);
+        resultField.setText(String.valueOf(operand));
+        operationField.setText(lastOperation);
+    }
+
+
 }
