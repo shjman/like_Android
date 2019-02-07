@@ -1,8 +1,0 @@
-<resources>
-    <string name="app_name">testFromSquirrel</string>
-    <string name="btn_for_login">Log in</string>
-    <string name="space_for_email">write email</string>
-    <string name="btn_for_registration">registration</string>
-    <string name="space_for_password">write password</string>
-    <string name="title_activity_registration">RegistrationActivity</string>
-</resources>
