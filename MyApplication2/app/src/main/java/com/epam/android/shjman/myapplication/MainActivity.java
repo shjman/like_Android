@@ -1,49 +1,59 @@
 package com.epam.android.shjman.myapplication;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
-    private static final String LAST_OPERATION = "LAST_OPERATION";
-    private static final String OPERAND = "OPERAND";
+    private static final String LAST_OPERATION_KEY = "LAST_OPERATION_KEY";
+    private static final String OPERAND_KEY = "OPERAND_KEY";
+    private static final String EMPTY_LINE = "";
+    private static final String SIGN_EQUAL = "=";
+    private static final String SIGN_ADDITION = "+";
+    private static final String SIGN_SUBTRACTION = "-";
+    private static final String SIGN_MULTIPLICATION = "*";
+    private static final String SING_DIVISION = "/";
 
-    private TextView resultField;
-    private TextView numberField;
-    private TextView operationField;
-    private Button btnClear;
+    private TextView resultFieldTextView;
+    private TextView numberFieldTextView;
+    private TextView operationFieldTextView;
 
     private Double operand = null;
-    private String lastOperation = "=";
-
+    private String lastOperation = SIGN_EQUAL;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        resultField = findViewById(R.id.tv_result);
-        numberField = findViewById(R.id.tv_number);
-        operationField = findViewById(R.id.tv_operation);
-        btnClear = findViewById(R.id.btn_clear);
 
-        btnClear.setOnClickListener(new View.OnClickListener() {
+        resultFieldTextView = findViewById(R.id.tv_result);
+        numberFieldTextView = findViewById(R.id.tv_number);
+        operationFieldTextView = findViewById(R.id.tv_operation);
+        Button clearButton = findViewById(R.id.btn_clear);
+
+        clearButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                numberField.setText("");
-                resultField.setText("");
-                operationField.setText("");
-                lastOperation = "=";
-                operand = null;
+                clearFields();
             }
         });
     }
 
+    private void clearFields() {
+        numberFieldTextView.setText(EMPTY_LINE);
+        resultFieldTextView.setText(EMPTY_LINE);
+        operationFieldTextView.setText(EMPTY_LINE);
+        lastOperation = SIGN_EQUAL;
+        operand = null;
+    }
+
     public void onNumberClick(View view) {
         Button button = (Button) view;
-        numberField.append(button.getText());
-        if (lastOperation.equals("=") && operand != null) {
+        numberFieldTextView.append(button.getText());
+        if (lastOperation.equals(SIGN_EQUAL) && operand != null) {
             operand = null;
         }
     }
@@ -51,67 +61,69 @@ public class MainActivity extends AppCompatActivity {
     public void onOperationClick(View view) {
         Button button = (Button) view;
         String operationSTR = button.getText().toString();
-        String number = numberField.getText().toString();
+        String number = numberFieldTextView.getText().toString();
         if (number.length() > 0) {
             try {
                 performOperation(Double.valueOf(number), operationSTR);
             } catch (NumberFormatException ex) {
-                numberField.setText("");
+                numberFieldTextView.setText(EMPTY_LINE);
             }
         }
         lastOperation = operationSTR;
-        operationField.setText(lastOperation);
+        operationFieldTextView.setText(lastOperation);
     }
 
     private void performOperation(Double number, String operation) {
         if (operand == null) {
             operand = number;
         } else {
-            if (lastOperation.equals("=")) {
+            if (lastOperation.equals(SIGN_EQUAL)) {
                 lastOperation = operation;
             }
             switch (lastOperation) {
-                case "=":
+                case SIGN_EQUAL:
                     operand = number;
                     break;
-                case "/":
+                case SING_DIVISION:
                     if (number == 0) {
                         operand = 0.0;
                     } else {
                         operand /= number;
                     }
                     break;
-                case "*":
+                case SIGN_MULTIPLICATION:
                     operand *= number;
                     break;
-                case "+":
+                case SIGN_ADDITION:
                     operand += number;
                     break;
-                case "-":
+                case SIGN_SUBTRACTION:
                     operand -= number;
+                    break;
+                default:
+                    Log.e("MainActivity", "something was did wrong with: " + lastOperation);
+                    //in the release.this is redundantly. and lastOperation  must be Enum
                     break;
             }
         }
-        resultField.setText(String.valueOf(operand));
-        numberField.setText("");
+        resultFieldTextView.setText(String.valueOf(operand));
+        numberFieldTextView.setText(EMPTY_LINE);
     }
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
-        outState.putString(LAST_OPERATION, lastOperation);
+        outState.putString(LAST_OPERATION_KEY, lastOperation);
         if (operand != null)
-            outState.putDouble(OPERAND, operand);
+            outState.putDouble(OPERAND_KEY, operand);
         super.onSaveInstanceState(outState);
     }
 
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
-        lastOperation = savedInstanceState.getString(LAST_OPERATION);
-        operand = savedInstanceState.getDouble(OPERAND);
-        resultField.setText(String.valueOf(operand));
-        operationField.setText(lastOperation);
+        lastOperation = savedInstanceState.getString(LAST_OPERATION_KEY);
+        operand = savedInstanceState.getDouble(OPERAND_KEY);
+        resultFieldTextView.setText(String.valueOf(operand));
+        operationFieldTextView.setText(lastOperation);
     }
-
-
 }
